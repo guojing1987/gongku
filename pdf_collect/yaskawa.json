@@ -1,0 +1,26 @@
+[
+ {
+  "model": "V1000",
+  "title": "安川变频器 V1000 小型矢量控制 技术手册（SICP C710606 17A，中文）",
+  "type": "技术手册",
+  "url": "https://www.manuallib.com/download/92E271BA1EBF271023BA6340135C9AC4.pdf",
+  "ok": true,
+  "sizeKB": 14669
+ },
+ {
+  "model": "Σ-7 SGD7S",
+  "title": "安川 Σ-7系列 AC伺服驱动器 旋转型伺服电机 产品手册（SGM7J/A/G/P，中文）",
+  "type": "产品手册",
+  "url": "https://www.manuallib.com/download/2023-11-16/%E5%AE%89%E5%B7%9D%CE%A3-7%E7%B3%BB%E5%88%97%E4%BA%A4%E6%B5%81%E4%BC%BA%E6%9C%8D%E9%A9%B1%E5%8A%A8%E5%99%A8%E6%97%8B%E8%BD%AC%E5%9E%8B%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BA%E4%BA%A7%E5%93%81%E6%89%8B%E5%86%8C.pdf",
+  "ok": true,
+  "sizeKB": 9431
+ },
+ {
+  "model": "MP3000 (MP3300)",
+  "title": "安川机器控制器 MP3000系列（含MP3300）运动控制功能 用户手册 SVC32/SVR32（中文）",
+  "type": "用户手册",
+  "url": "https://www.manuallib.com/download/BA1B776A0C185C9791C7E401B48A008B.pdf",
+  "ok": true,
+  "sizeKB": 21848
+ }
+]

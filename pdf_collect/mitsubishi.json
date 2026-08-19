@@ -1,0 +1,58 @@
+[
+  {
+    "model": "FX5U",
+    "title": "MELSEC iQ-F FX5U CPU模块 硬件手册（JY997D62401M）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/plcf/jy997d62401/jy997d62401m.pdf",
+    "ok": true,
+    "sizeKB": 737
+  },
+  {
+    "model": "FX5UC",
+    "title": "MELSEC iQ-F FX5UC CPU模块 硬件手册（JY997D62501P）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/plcf/jy997d62501/jy997d62501p.pdf",
+    "ok": true,
+    "sizeKB": 745
+  },
+  {
+    "model": "FR-E700",
+    "title": "三菱通用变频器 FR-E700 使用手册（应用篇）",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230801/%E8%B5%84%E6%96%99/%E4%B8%89%E8%8F%B1%E5%8F%98%E9%A2%91%E5%99%A8FR-E700%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C(%E5%BA%94%E7%94%A8%E7%AF%87).pdf",
+    "ok": true,
+    "sizeKB": 22182
+  },
+  {
+    "model": "MR-J4",
+    "title": "MELSERVO-J4系列 MR-J4-B 附加工程说明书（GOT连接，中文）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.co.jp/fa/document/others/got/adp_conn_c004/MEL_C_MR-J4-B_X_1000A_C.pdf",
+    "ok": true,
+    "sizeKB": 3635
+  },
+  {
+    "model": "MR-J4",
+    "title": "MELSERVO-J4系列 MR-J4-B 样本画面说明书（中文）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/fa/document/others/got/conn_c040/MITSUBISHI_MR-J4-B_V_Ver4a_C.pdf",
+    "ok": true,
+    "sizeKB": 3482
+  },
+  {
+    "model": "MR-J4",
+    "title": "MELSERVO-J4系列 MR-J4-A-RJ 样本画面说明书（中文）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/fa/document/others/got/conn_c033/MITSUBISHI_MR-J4-A-RJ_V_Ver2_C.pdf",
+    "ok": true,
+    "sizeKB": 2390
+  },
+  {
+    "model": "FR系列(变频器故障代码表)",
+    "title": "三菱电机通用变频器 D800 使用手册（维护篇·含 E.OC/E.OV/E.THM 等异常显示一览故障代码表）",
+    "type": "故障代码表",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/inv/ib0601047chn/ib0601047chnb.pdf",
+    "ok": true,
+    "sizeKB": 2166
+  }
+]

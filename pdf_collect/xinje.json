@@ -1,0 +1,82 @@
+[
+  {
+    "model": "XD/XL（XC换代系列）",
+    "title": "XD、XL系列可编程序控制器用户手册【硬件篇】（PD01 20260410 1.6）",
+    "type": "硬件手册",
+    "url": "https://cdn.xinje.com/XD、XL系列可编程序控制器用户手册（硬件篇）（PD 01 20260410 1.6）.pdf",
+    "ok": true,
+    "sizeKB": 15496
+  },
+  {
+    "model": "XD/XL（XC换代系列）",
+    "title": "XD、XL系列可编程控制器用户手册【基本指令篇】（PD05 20260610 1.6.1）",
+    "type": "指令手册",
+    "url": "https://cdn.xinje.com/XD、XL系列可编程控制器用户手册（基本指令篇）（PD05 20260610 1.6.1）.pdf",
+    "ok": true,
+    "sizeKB": 40370
+  },
+  {
+    "model": "XD/XL（XC换代系列）",
+    "title": "XD、XL系列可编程控制器用户手册【定位控制篇】（PD02 20260510 1.3）",
+    "type": "定位控制手册",
+    "url": "https://cdn.xinje.com/XD、XL系列可编程控制器用户手册（定位控制篇）（PD02 20260510 1.3）.pdf",
+    "ok": true,
+    "sizeKB": 17225
+  },
+  {
+    "model": "XD/XL/XG",
+    "title": "XD/XL/XG系列可编程控制器用户手册【软件篇】XDPPro V3.8.1（PD03 20260510 1.5.1）",
+    "type": "软件手册",
+    "url": "https://cdn.xinje.com/XD XL XG系列可编程控制器用户手册（软件篇）（V3.8.1）（PD03 20260510 1.5.1）.pdf",
+    "ok": true,
+    "sizeKB": 8526
+  },
+  {
+    "model": "XD3",
+    "title": "XD3-22T4TC-E可编程控制器用户手册",
+    "type": "硬件手册",
+    "url": "https://cdn.xinje.com/XD3-22T4TC-E可编程控制器用户手册.pdf",
+    "ok": true,
+    "sizeKB": 1109
+  },
+  {
+    "model": "VH1（VI/VE换代系列）",
+    "title": "VH1-PE100 变频器简易安装及操作说明书",
+    "type": "操作说明书",
+    "url": "https://cdn.xinje.com/VH1-PE100简易安装及操作说明书（S581013 1.0）（1）-2023.11.18.pdf",
+    "ok": true,
+    "sizeKB": 861
+  },
+  {
+    "model": "VH6/VH1/VHL/VH5（VI/VE换代系列）",
+    "title": "变频器VH6 VH1 VHL VH5 产品综合样本（2026.6）",
+    "type": "综合样本",
+    "url": "https://cdn.xinje.com/变频器VH6 VH1 VHL VH5（供网络下载）.pdf",
+    "ok": true,
+    "sizeKB": 15987
+  },
+  {
+    "model": "DS6/DS5/DF3/DM6/DL6",
+    "title": "伺服系统产品综合样本（DS6、DS5、DF3、iMF5N、DM6、DL6）",
+    "type": "综合样本",
+    "url": "https://cdn.xinje.com/2026伺服系统综合样本 (供网络下载）.pdf",
+    "ok": true,
+    "sizeKB": 47098
+  },
+  {
+    "model": "DS5C1/DS5C2",
+    "title": "DS5C2系列高性能伺服驱动器用户手册",
+    "type": "用户手册",
+    "url": "https://cdn.xinje.com/DS5C2系列高性能伺服驱动器(仅供网络下载).pdf",
+    "ok": true,
+    "sizeKB": 8356
+  },
+  {
+    "model": "DS5E/DS5L",
+    "title": "DS5E/DS5L系列伺服驱动器使用手册",
+    "type": "用户手册",
+    "url": "https://www.miiteec.org.cn/ueditor/php/upload/file/20190710/DS5E DS5L 系列伺服驱动器使用手册.pdf",
+    "ok": true,
+    "sizeKB": 7936
+  }
+]

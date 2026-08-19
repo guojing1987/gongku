@@ -1,0 +1,42 @@
+[
+  {
+    "model": "FX3U/FX3G",
+    "title": "三菱FX3U/FX3G 系列PLC 编程手册·基础及应用指令篇（官方 JY997D16601，英文版）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+    "ok": true,
+    "sizeKB": 22319
+  },
+  {
+    "model": "FR-D700",
+    "title": "三菱通用变频器 FR-D700 使用手册（中文，官方 IB0600834CHN）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/inv/ib0600834chn/ib0600834chnf.pdf",
+    "ok": true,
+    "sizeKB": 5949
+  },
+  {
+    "model": "MR-JE",
+    "title": "MELSERVO-JE 系列 MR-JE-A 样本画面说明书（GOT连接，官方中文）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/fa/document/others/got/conn_c043/GS21_MITSUBISHI_MR-JE-A_V_Ver1_C.pdf",
+    "ok": true,
+    "sizeKB": 1803
+  },
+  {
+    "model": "GOT2000",
+    "title": "三菱 GOT2000 图形操作终端 使用手册（中文，官方 SH081204CHN）",
+    "type": "手册",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/got/sh081204chn/sh081204chnav.pdf",
+    "ok": true,
+    "sizeKB": 19922
+  },
+  {
+    "model": "FR-E800(变频器故障代码表)",
+    "title": "三菱通用变频器 E800 使用手册·维护篇（含 E.OC/E.OV/E.THM 等故障代码表，官方中文）",
+    "type": "故障代码表",
+    "url": "https://www.mitsubishielectric.com/dl/fa/document/manual/inv/ib0600875chn/ib0600875chnp.pdf",
+    "ok": true,
+    "sizeKB": 1720
+  }
+]

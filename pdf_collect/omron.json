@@ -1,0 +1,42 @@
+[
+  {
+    "model": "CP1H",
+    "title": "SYSMAC CP系列 CP1H CPU单元 操作手册（中文） 样本编号 SBCA-CN5-340H",
+    "type": "手册",
+    "url": "https://www.fa.omron.com.cn/data_pdf/mnu/sbca-cn5-340h_cp1h.pdf",
+    "ok": true,
+    "sizeKB": 30666
+  },
+  {
+    "model": "CP1E",
+    "title": "SYSMAC CP系列 CP1E CPU单元 硬件操作手册（中文） 手册编号 W479-CN5-08",
+    "type": "手册",
+    "url": "https://www.fa.omron.com.cn/data_pdf/mnu/w479-cn5-08_cp1e.pdf",
+    "ok": true,
+    "sizeKB": 23999
+  },
+  {
+    "model": "CP1E",
+    "title": "SYSMAC CP系列 CP1E CPU单元 软件操作手册（中文） 手册编号 W480-CN5-08",
+    "type": "手册",
+    "url": "https://www.fa.omron.com.cn/data_pdf/mnu/w480-cn5-08.pdf",
+    "ok": true,
+    "sizeKB": 25350
+  },
+  {
+    "model": "3G3MX2",
+    "title": "MX2-ZV1系列（3G3MX2）多功能小型变频器 用户手册（中文） 手册编号 I585-CN5-03",
+    "type": "手册",
+    "url": "https://www.fa.omron.com.cn/data_pdf/mnu/i585-cn5-03.pdf",
+    "ok": true,
+    "sizeKB": 11434
+  },
+  {
+    "model": "E2EW",
+    "title": "E2EW系列 用于焊装工位的接近传感器 产品样本（中文） 样本编号 SCEO-CN5-048C",
+    "type": "样本",
+    "url": "https://www.fa.omron.com.cn/data_pdf/cat/e2ew_scec-cn5-048c.pdf?id=3770",
+    "ok": true,
+    "sizeKB": 25467
+  }
+]

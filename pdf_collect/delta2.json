@@ -1,0 +1,90 @@
+[
+  {
+    "model": "DVP-E/S",
+    "title": "DVP全系列样本手册.pdf",
+    "type": "样本",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/DVP%E5%85%A8%E7%B3%BB%E5%88%97%E6%A0%B7%E6%9C%AC%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 4694
+  },
+  {
+    "model": "DVP",
+    "title": "PLC操作手册（程序篇）.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/PLC%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C%EF%BC%88%E7%A8%8B%E5%BA%8F%E7%AF%87%EF%BC%89.pdf",
+    "ok": true,
+    "sizeKB": 14529
+  },
+  {
+    "model": "DVP",
+    "title": "DVP-PLC程序设计技巧大全.pdf",
+    "type": "技术资料",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/DVP-PLC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7%E5%A4%A7%E5%85%A8.pdf",
+    "ok": true,
+    "sizeKB": 4156
+  },
+  {
+    "model": "VFD-M",
+    "title": "台达变频器VFD-M使用手册 (1).pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BE%E5%8F%98%E9%A2%91%E5%99%A8VFD-M%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%20%281%29.pdf",
+    "ok": true,
+    "sizeKB": 2575
+  },
+  {
+    "model": "VFD-M",
+    "title": "台达VFD-M系列变频器使用手册.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEVFD-M%E7%B3%BB%E5%88%97%E5%8F%98%E9%A2%91%E5%99%A8%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 2524
+  },
+  {
+    "model": "VFD-CP",
+    "title": "台达CP2000系列变频器使用手册.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BECP2000%E7%B3%BB%E5%88%97%E5%8F%98%E9%A2%91%E5%99%A8%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 56666
+  },
+  {
+    "model": "VFD-C2000",
+    "title": "台达C2000系列变频器使用手册.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEC2000%E7%B3%BB%E5%88%97%E5%8F%98%E9%A2%91%E5%99%A8%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 64409
+  },
+  {
+    "model": "VFD-MS300",
+    "title": "台达MS300系列变频器 使用手册.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEMS300%E7%B3%BB%E5%88%97%E5%8F%98%E9%A2%91%E5%99%A8%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 24876
+  },
+  {
+    "model": "VFD-S",
+    "title": "台达VFD-S系列驱动器 使用手册.pdf",
+    "type": "手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEVFD-S%E7%B3%BB%E5%88%97%E9%A9%B1%E5%8A%A8%E5%99%A8%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 10355
+  },
+  {
+    "model": "ASDA-A3",
+    "title": "台达ASDA-A3系列伺服系统应用技术手册.pdf",
+    "type": "应用手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEASDA-A3%E7%B3%BB%E5%88%97%E4%BC%BA%E6%9C%8D%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 39647
+  },
+  {
+    "model": "ASDA-B3",
+    "title": "台达ASDA-B3系列伺服系统应用技术手册.pdf",
+    "type": "应用手册",
+    "url": "https://dl.jcpeixun.com/download/20230711/%E5%8F%B0%E8%BE%BE/%E8%B5%84%E6%96%99/%E5%8F%B0%E8%BE%BEASDA-B3%E7%B3%BB%E5%88%97%E4%BC%BA%E6%9C%8D%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C.pdf",
+    "ok": true,
+    "sizeKB": 25200
+  }
+]

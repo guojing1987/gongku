@@ -1,0 +1,26 @@
+[
+  {
+    "model": "S7-200 SMART",
+    "title": "S7-200 SMART 系统手册（中文，V2.x/V3.x 通用版，官方资产服务器直链）",
+    "type": "手册",
+    "url": "https://assets.new.siemens.com/siemens/assets/api/uuid:7c3cf1cd-d757-4f09-9278-55dfa11497b0/S7-200-SMART-system-manual-zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 27161
+  },
+  {
+    "model": "S7-200 SMART",
+    "title": "S7-200 SMART G2 系统手册（中文，官方资产服务器直链）",
+    "type": "手册",
+    "url": "https://assets.new.siemens.com/siemens/assets/api/uuid:74f93711-7c13-4228-b83a-8f40be3feef3/S7200-SMART-G2-system-manual-zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 30393
+  },
+  {
+    "model": "SIMOTICS V90",
+    "title": "SINAMICS V90 在线帮助（中文，官方文档缓存服务器直链）",
+    "type": "手册",
+    "url": "https://cache.industry.siemens.com/dl/files/154/109775154/att_1009193/v1/OnlineHelp_V90_zh_CN.pdf",
+    "ok": true,
+    "sizeKB": 3601
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "model": "H5U",
+    "title": "H5U系列可编程逻辑控制器用户手册（说明书）",
+    "type": "手册",
+    "url": "https://www.shdabai.com/upload/file/20240925210732727.pdf",
+    "ok": true,
+    "sizeKB": 1900,
+    "note": "代理商大柏电子官网直链；已验证%PDF头、1.9MB。该站启用了防盗链，需从 www.shdabai.com 页面访问或请求时附带该域 Referer 方可下载（HTTP/HTTPS 均可）。"
+  },
+  {
+    "model": "H5U",
+    "title": "H5U&Easy系列可编程逻辑控制器指令手册-CN-A14（756页）",
+    "type": "指令手册",
+    "url": "https://raw.gitcode.com/Premium-Resources/a4dba/blobs/2b3c3de51a0f3a1a14e952075ef439eb41358f9b/H5U%26Easy%E7%B3%BB%E5%88%97%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8%E6%8C%87%E4%BB%A4%E6%89%8B%E5%86%8C-CN-A14(756%E9%A1%B5%E8%AF%A6%E7%BB%86).pdf",
+    "ok": true,
+    "sizeKB": 31416,
+    "note": "GitCode 公开仓库 raw 直链（无登录/防盗链限制）；已验证%PDF头、约31.4MB、756页完整指令手册。",
+    "md5_sha": "sha:2b3c3de51a0f3a1a14e952075ef439eb41358f9b"
+  },
+  {
+    "model": "MD500",
+    "title": "MD500系列拉丝机专用变频器用户手册",
+    "type": "手册",
+    "url": "https://www.shdabai.com/upload/file/20230609204055465.pdf",
+    "ok": true,
+    "sizeKB": 17146,
+    "note": "代理商大柏电子官网直链；已验证%PDF头、16.7MB。注意此为拉丝机专用版本，含产品信息/安全注意事项/安装接线/调试运行/故障处理等章节。该站启用防盗链，需从 www.shdabai.com 页面访问或附带该域 Referer 下载。未找到免登录的通用 MD500 用户手册直链。"
+  },
+  {
+    "model": "IS620N",
+    "title": "IS620N系列伺服用户手册-简易版-20200813",
+    "type": "手册",
+    "url": "https://raw.gitcode.com/Open-source-documentation-tutorial/b1307/blobs/56696c16b0378181926fe79ceb5254df1b5fffeb/IS620N%E7%B3%BB%E5%88%97%E4%BC%BA%E6%9C%8D%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C-%E7%AE%80%E6%98%93%E7%89%88-20200813.pdf",
+    "ok": true,
+    "sizeKB": 7608,
+    "note": "GitCode 公开仓库 raw 直链（无登录/防盗链限制）；已验证%PDF头、约7.6MB，覆盖产品安全信息、驱动器与电机安装、硬件配线、故障处理。",
+    "md5_sha": "sha:56696c16b0378181926fe79ceb5254df1b5fffeb"
+  }
+]

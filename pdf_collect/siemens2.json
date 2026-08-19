@@ -1,0 +1,90 @@
+[
+  {
+    "model": "S7-1500",
+    "title": "SIMATIC S7-1500 / ET 200MP 手册集（中文，文档目录集）",
+    "type": "手册",
+    "url": "https://cache.industry.siemens.com/dl/files/384/86140384/att_1141233/v1/s71500_et200mp_manual_collection_zh-CH.pdf",
+    "ok": true,
+    "sizeKB": 1262
+  },
+  {
+    "model": "S7-1500",
+    "title": "SIMATIC S7-1500 IO-Link 主站系统手册（中文）",
+    "type": "手册",
+    "url": "https://cache.industry.siemens.com/dl/files/143/109763143/att_979633/v1/s71500_io_link_master_manual_zh-CHS_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 1524
+  },
+  {
+    "model": "S7-1500",
+    "title": "S7-1500 产品样本/选型手册（中文，西门子资料中心直链）",
+    "type": "样本",
+    "url": "https://slc-di-cs-css-prod.oss-cn-beijing.aliyuncs.com/downloadcenterproduction/doc/20252131173432285_4170_S7-1500_20250331.pdf",
+    "ok": true,
+    "sizeKB": 4069
+  },
+  {
+    "model": "S7-1500",
+    "title": "SIMATIC S7 编程风格指南 Programming Guideline V16（中文，适用于 S7-1500/1200 编程）",
+    "type": "手册",
+    "url": "https://cache.industry.siemens.com/dl/files/040/90885040/att_1117483/v1/81318674_Programming_guideline_DOC_v16_CN.pdf",
+    "ok": true,
+    "sizeKB": 5050
+  },
+  {
+    "model": "SINAMICS G120",
+    "title": "SINAMICS G120 控制单元 CU230P-2 操作说明（中文，西门子资料中心直链）",
+    "type": "操作说明",
+    "url": "https://slc-di-cs-css-prod.oss-cn-beijing.aliyuncs.com/downloadcenterproduction/doc/20259110935337637_G120_CU230P2_op_instr_0725_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 21863
+  },
+  {
+    "model": "SINAMICS G120",
+    "title": "SINAMICS G120XA 通用变频器操作说明（中文，G120 系列）",
+    "type": "操作说明",
+    "url": "https://cache.industry.siemens.com/dl/files/823/109762823/att_969610/v1/G120XA_op_instr_0319_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 1970
+  },
+  {
+    "model": "S7-200 SMART",
+    "title": "S7-200 SMART 系统手册（中文，含编程指令与以太网/通信章节，西门子文档缓存直链）",
+    "type": "系统手册",
+    "url": "https://cache.industry.siemens.com/dl/files/610/109745610/att_1010427/v1/s7-200_SMART_system_manual_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 13296
+  },
+  {
+    "model": "SIMOTICS V90",
+    "title": "SINAMICS V90 PN 200V/400V 伺服驱动器操作说明（中文，含 SIMOTICS S-1FL6）",
+    "type": "操作说明",
+    "url": "https://cache.industry.siemens.com/dl/files/880/109737880/att_884440/v1/SINAMICS_V90_PN_200V_400V_OPI_zh-CHS_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 2957
+  },
+  {
+    "model": "SIMOTICS V90",
+    "title": "SINAMICS V90 PTI/USS/Modbus 与 SIMOTICS S-1FL6 操作说明（中文）",
+    "type": "操作说明",
+    "url": "https://cache.industry.siemens.com/dl/files/345/109767345/att_984693/v1/V90_PTI_1FL6_op_instr_0419_zh-CHS.pdf",
+    "ok": true,
+    "sizeKB": 2050
+  },
+  {
+    "model": "S7-1200",
+    "title": "S7-1200 G2 移植指导 V2.0（中文，从 S7-1200 迁移到 G2，西门子资料中心直链）",
+    "type": "手册",
+    "url": "https://slc-di-cs-css-prod.oss-cn-beijing.aliyuncs.com/downloadcenterproduction/doc/202621241243345386_S7-1200%20G2%20%E7%A7%BB%E6%A4%8D%E6%8C%87%E5%AF%BC%20V2.0-external-new.pdf",
+    "ok": true,
+    "sizeKB": 6128
+  },
+  {
+    "model": "S7-1200",
+    "title": "S7-1200 System Manual 系统手册（英文版，西门子文档缓存直链）",
+    "type": "系统手册",
+    "url": "https://cache.industry.siemens.com/dl/files/940/109772940/att_1002391/v1/s71200_system_manual_en-US_en-US.pdf",
+    "ok": true,
+    "sizeKB": 1780
+  }
+]

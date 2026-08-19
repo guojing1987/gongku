@@ -1,0 +1,50 @@
+[
+  {
+    "model": "ACS355",
+    "title": "ACS355 变频器 用户手册（中文）",
+    "type": "手册",
+    "url": "https://library.e.abb.com/public/60940688ac9e4f31928ae9da7bc994be/ACS355_UM_C_A5.pdf",
+    "ok": true,
+    "sizeKB": 10630
+  },
+  {
+    "model": "ACS580",
+    "title": "ACH580-07 变频器（75…250kW）硬件手册（中文）",
+    "type": "手册",
+    "url": "https://library.e.abb.com/public/3c8c908fb9da415b9d442a483a846c1f/ACH580_07_hw_CN_revA.pdf?x-sign=BZAFSKzSmQIaaEzOFcHFk6G5G%2BUwJOja55Vrh4WJJFPGQlxBrEFzy57d3A7wTOcL",
+    "ok": true,
+    "sizeKB": 21748
+  },
+  {
+    "model": "AC500",
+    "title": "AC500 系列 PLC 编程手册（CodeSys 指令手册，中文）",
+    "type": "手册",
+    "url": "https://library.e.abb.com/public/a0d2dcf9bcd44d8fc1257c210040df6c/AD220002_CodeSys%20Programming%20Manual.pdf",
+    "ok": true,
+    "sizeKB": 2746
+  },
+  {
+    "model": "AC500",
+    "title": "AC500 系列 PLC 选型样本（CP600 控制面板和 Automation Builder，中文）",
+    "type": "选型样本",
+    "url": "https://library.e.abb.com/public/954833fb3a8b466da6cdcbf740f3c19a/AC500%20PLCQuick%20selection%20_3ABD00050526_Low.pdf",
+    "ok": true,
+    "sizeKB": 4878
+  },
+  {
+    "model": "AC500",
+    "title": "PLC 自动化产品（AC500）主样本（中文）",
+    "type": "选型样本",
+    "url": "https://library.e.abb.com/public/c81fcc2e3e7746c891bc966f42a515e9/3ABD00050404_zh_F_PLC%20Automation%20main%20catalog.pdf?x-sign=BbvSDhHtZX4/haCxp6SLBXa2jUahrxVIC0ayu7%2BKEK8M7oWE0Zhia3pMnoRrAbQe",
+    "ok": true,
+    "sizeKB": 4896
+  },
+  {
+    "model": "PSTX",
+    "title": "PSTX 全智型软起动器产品样本（英文版，官方直链）",
+    "type": "选型样本",
+    "url": "https://library.e.abb.com/public/665367f9e4184e0cb4d1687d4bb07c0b/P8-15.pdf",
+    "ok": true,
+    "sizeKB": 2443
+  }
+]

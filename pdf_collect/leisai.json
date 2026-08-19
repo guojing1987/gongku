@@ -1,0 +1,11 @@
+[
+  {"model":"DM542","title":"DM542 V3.0 数字式两相步进驱动器使用说明书","type":"手册","url":"https://www.leadtronker.com/Documents/Manuals/CN/DM542V3.0_UM_cn.pdf","ok":true,"sizeKB":1184},
+  {"model":"DM542S","title":"DM542S 数字式两相步进驱动器使用说明书","type":"手册","url":"https://www.leadtronker.com/Documents/Manuals/CN/DM542S_UM_cn.pdf","ok":true,"sizeKB":576},
+  {"model":"DM542","title":"DM542 数字式两相步进驱动器使用说明书","type":"手册","url":"https://www.leadtronker.com/Documents/Manuals/CN/DM542_manual_cn.pdf","ok":true,"sizeKB":496},
+  {"model":"DM1-C","title":"DM1-C 系列脉冲型步进驱动器用户手册 V2.0","type":"手册","url":"https://www.leisai.com/upload/file/2026/03/04/DM1-C%E7%B3%BB%E5%88%97%E8%84%89%E5%86%B2%E5%9E%8B%E6%AD%A5%E8%BF%9B%E9%A9%B1%E5%8A%A8%E5%99%A8%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C%20V2.0.pdf","ok":true,"sizeKB":10661},
+  {"model":"DM1-IO","title":"DM1-IO 系列调速型步进驱动器用户手册 V1.4","type":"手册","url":"https://www.leisai.com/upload/file/2026/03/04/DM1-IO%E7%B3%BB%E5%88%97%E8%B0%83%E9%80%9F%E5%9E%8B%E6%AD%A5%E8%BF%9B%E9%A9%B1%E5%8A%A8%E5%99%A8%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8CV1.4.pdf","ok":true,"sizeKB":7297},
+  {"model":"L5P-S","title":"L5P-S 系列交流伺服系统用户手册 V1.0","type":"手册","url":"https://www.leisai.com/upload/file/2025/09/30/L5P-S%E7%B3%BB%E5%88%97%E4%BA%A4%E6%B5%81%E4%BC%BA%E6%9C%8D%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8CV1.0.pdf","ok":true,"sizeKB":25400},
+  {"model":"L7N","title":"L7N 系列交流伺服系统用户手册 V1.1","type":"手册","url":"https://www.leisai.com/upload/file/2025/09/30/L7N%E7%B3%BB%E5%88%97%E4%BA%A4%E6%B5%81%E4%BC%BA%E6%9C%8D%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8CV1.1.pdf","ok":true,"sizeKB":60267},
+  {"model":"DMC3000","title":"DMC3000 系列运动控制卡用户使用手册 V2.0","type":"手册","url":"https://www.leisai.com/upload/file/2025/07/31/DMC3000%E7%B3%BB%E5%88%97%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C20250710.pdf","ok":true,"sizeKB":12473},
+  {"model":"CL1-C","title":"CL1-C 系列经济型闭环步进驱动器用户手册 V1.1","type":"手册","url":"https://www.leisai.com/upload/file/2025/09/23/CL1-C%E7%B3%BB%E5%88%97%E9%97%AD%E7%8E%AF%E6%AD%A5%E8%BF%9B%E9%A9%B1%E5%8A%A8%E5%99%A8%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C%20V1.1.pdf","ok":true,"sizeKB":7610}
+]
