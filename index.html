@@ -216,7 +216,76 @@ function loadCloud(){return fetch('https://guojing1987.github.io/gongku/cloud/us
 /* 自动同步队列 */
 var _syncPending=false,_syncTimer=null;
 function _autoSyncCloud(){var tok=localStorage.getItem('ghToken');if(!tok||!/^ghp_[A-Za-z0-9]+$/.test(tok))return;_syncPending=true;if(_syncTimer)clearTimeout(_syncTimer);_syncTimer=setTimeout(function(){_syncTimer=null;if(!_syncPending)return;_syncPending=false;doCloudSyncSilent();},2000);}
-function doCloudSyncSilent(){var tok=localStorage.getItem('ghToken');if(!tok||!/^ghp_[A-Za-z0-9]+$/.test(tok))return;var _mk=_getCust();var _mks=Object.keys(_mk);if(!_mks.length)return;fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+tok}}).then(function(r){if(!r.ok)return null;return openDB().then(function(db){var jobs=[],urlUpdates=[];Object.keys(_mk).forEach(function(k){_mk[k].forEach(function(d){if(d&&d.url&&d.url.indexOf('local:')===0)jobs.push({k:k,d:d,fid:d.url.slice(6)});});});if(!jobs.length){var data=JSON.stringify(_mk);return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{headers:{'Authorization':'Bearer '+tok}}).then(function(r){return r.json();}).then(function(d2){var body={message:'自动云端同步',content:_b64u(data)};if(d2&&d2.sha)body.sha=d2.sha;return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{method:'PUT',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify(body)});}).then(function(res){if(res&&res.content){_cloud=_mk;loadCloud().then(function(){renderBrands();});}});}var total=jobs.length,done=0,fileOk=0;function doOne(j){return new Promise(function(res){var tx=db.transaction('files','readonly');var g=tx.objectStore('files').get(j.fid);g.onsuccess=function(){var blob=g.result;if(!blob){adv();return res();}fileToB64(blob).then(function(b64){var nm=String(blob.name||'')||'file';var em=nm.match(/\.([A-Za-z0-9]{1,8})$/);var ext=em?('.'+em[1].toLowerCase()):'';var remote=(j.fid||('file'+Date.now()))+ext;return ghPut(tok,'cloud/files/'+remote,b64,null,'自动云端同步');}).then(function(r2){if(r2&&r2.content){var nm2=String(blob.name||'')||'file';var e2=nm2.match(/\.([A-Za-z0-9]{1,8})$/);var ext2=e2?('.'+e2[1].toLowerCase()):'';j.d.url='https://guojing1987.github.io/gongku/cloud/files/'+(j.fid||'')+ext2;urlUpdates.push({k:j.k,fid:j.fid,url:j.d.url});fileOk++;}adv();res();}).catch(function(){adv();res();});};g.onerror=function(){adv();res();};});}function pool(arr,limit,fn){var i=0;function nx(){if(i>=arr.length)return Promise.resolve();var idx=i++;return fn(arr[idx]).then(nx);}var ps=[];for(var c=0;c<limit;c++)ps.push(nx());return Promise.all(ps);}return pool(jobs,2,doOne).then(function(){if(urlUpdates.length){var _loc=_getLocalCustRaw();urlUpdates.forEach(function(u){var arr=_loc[u.k];if(arr)arr.forEach(function(dd){if(dd&&dd.url==='local:'+u.fid)dd.url=u.url;});});localStorage.setItem('custDocs',JSON.stringify(_loc));}var data=JSON.stringify(_mk);return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{headers:{'Authorization':'Bearer '+tok}}).then(function(r){return r.json();}).then(function(d2){var body={message:'自动云端同步',content:_b64u(data)};if(d2&&d2.sha)body.sha=d2.sha;return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{method:'PUT',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify(body)});}).then(function(res){if(res&&res.content){_cloud=_mk;loadCloud().then(function(){renderBrands();});}});});}).catch(function(){});});}).catch(function(){});}
+function doCloudSyncSilent(){
+  var tok=localStorage.getItem('ghToken');
+  if(!tok||!/^ghp_[A-Za-z0-9]+$/.test(tok))return;
+  var _mk=_getCust();
+  if(!Object.keys(_mk).length)return;
+  fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+tok}})
+  .then(function(r){if(!r.ok)throw 0;return openDB();})
+  .then(function(db){
+    var jobs=[],urlUpdates=[];
+    Object.keys(_mk).forEach(function(k){
+      _mk[k].forEach(function(d){
+        if(d&&d.url&&d.url.indexOf('local:')===0)jobs.push({k:k,d:d,fid:d.url.slice(6)});
+      });
+    });
+    function upFile(j){
+      return new Promise(function(res){
+        var tx=db.transaction('files','readonly');
+        var g=tx.objectStore('files').get(j.fid);
+        g.onsuccess=function(){
+          var blob=g.result;
+          if(!blob){res();return;}
+          fileToB64(blob).then(function(b64){
+            var nm=String(blob.name||'')||'file';
+            var em=nm.match(/\.([A-Za-z0-9]{1,8})$/);
+            var ext=em?('.'+em[1].toLowerCase()):'';
+            var remote=(j.fid||('file'+Date.now()))+ext;
+            ghPut(tok,'cloud/files/'+remote,b64,null,'自动云端同步').then(function(r2){
+              if(r2&&r2.content){
+                var em2=nm.match(/\.([A-Za-z0-9]{1,8})$/);
+                var ext2=em2?('.'+em2[1].toLowerCase()):'';
+                j.d.url='https://guojing1987.github.io/gongku/cloud/files/'+(j.fid||'')+ext2;
+                urlUpdates.push({k:j.k,fid:j.fid,url:j.d.url});
+              }
+              res();
+            }).catch(function(){res();});
+          }).catch(function(){res();});
+        };
+        g.onerror=function(){res();};
+      });
+    }
+    function seq(i){
+      if(i>=jobs.length)return Promise.resolve();
+      return upFile(jobs[i]).then(function(){return seq(i+1);});
+    }
+    return seq(0).then(function(){
+      if(urlUpdates.length){
+        var _loc=_getLocalCustRaw();
+        urlUpdates.forEach(function(u){
+          var arr=_loc[u.k];
+          if(arr)arr.forEach(function(dd){
+            if(dd&&dd.url==='local:'+u.fid)dd.url=u.url;
+          });
+        });
+        localStorage.setItem('custDocs',JSON.stringify(_loc));
+      }
+      var data=JSON.stringify(_mk);
+      return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{headers:{'Authorization':'Bearer '+tok}})
+      .then(function(r){return r.json();})
+      .then(function(d2){
+        var body={message:'自动云端同步',content:_b64u(data)};
+        if(d2&&d2.sha)body.sha=d2.sha;
+        return fetch('https://api.github.com/repos/guojing1987/gongku/contents/cloud/userdata.json',{method:'PUT',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify(body)});
+      })
+      .then(function(res){
+        if(res&&res.content){_cloud=_mk;loadCloud().then(function(){renderBrands();});}
+      });
+    });
+  })
+  .catch(function(){});
+}
 function _b64u(s){return btoa(unescape(encodeURIComponent(s)));}
 function _countDocs(o){var n=0;Object.keys(o).forEach(function(k){n+=(o[k]||[]).length;});return n;}
 function openSyncUI(){var t=localStorage.getItem('ghToken')||'';document.getElementById('ghTok').value=t;document.getElementById('syncPanel').classList.remove('hide');showSyncState();}
