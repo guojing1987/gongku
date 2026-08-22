@@ -1,0 +1,15 @@
+{
+  "name": "设备资料库",
+  "short_name": "资料库",
+  "description": "工控设备档案·资料·维修·工单管理",
+  "start_url": "../index.html",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#5B5BD6",
+  "theme_color": "#5B5BD6",
+  "icons": [
+    { "src": "pwa/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "pwa/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
