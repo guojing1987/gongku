@@ -306,7 +306,7 @@ fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+tok}}).t
   return openDB();
 }).then(function(db){
   var jobs=[],urlUpdates=[];Object.keys(_mk).forEach(function(k){_mk[k].forEach(function(d){if(d&&d.url&&d.url.indexOf('local:')===0)jobs.push({k:k,d:d,fid:d.url.slice(6)});});});
-  var total=jobs.length,done=0,fileOk=0,fileFail=0,fileFails=[],authFail=false;
+  var total=jobs.length,done=0,fileOk=0,fileFail=0,fileFails=[],fileSkip=0,skipNames=[],authFail=false;
   function adv(){done++;st.innerHTML='正在同步…('+done+'/'+total+')';}
   function doOne(j){
     return new Promise(function(res){
@@ -314,6 +314,7 @@ fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+tok}}).t
       g.onsuccess=function(){
         var blob=g.result;
         if(!blob){fileFail++;fileFails.push(j.d.t||j.fid);adv();return res();}
+        if((blob.size||0)>100*1024*1024){fileSkip++;skipNames.push((j.d.t||j.fid)+'（'+((blob.size||0)/1048576).toFixed(0)+'MB）');adv();return res();}
         fileToB64(blob).then(function(b64){
           var nm=String(blob.name||'')||'file';var em=nm.match(/\.([A-Za-z0-9]{1,8})$/);var ext=em?('.'+em[1].toLowerCase()):'';var remote=(j.fid||('file'+Date.now()))+ext;
           return ghPut(tok,'cloud/files/'+remote,b64,null,'云同步文件');
@@ -340,7 +341,7 @@ fetch('https://api.github.com/user',{headers:{'Authorization':'Bearer '+tok}}).t
       .then(function(r){return r.json();})
       .then(function(res){var m=(res&&res.message||'');showSyncState();
         if(m&&(/auth/i.test(m)||/credential/i.test(m))){alert('同步失败：令牌无效或已失效，请重新粘贴有效令牌。');return;}
-        if(res&&res.content){_cloud=_mk;devSyncToCloud();showSyncState();alert('同步成功：已上传 '+fileOk+' 个本机文件，跨设备点开可查看'+(fileFail?('；失败 '+fileFail+' 个（'+fileFails.slice(0,3).join('、')+'）'):'。'));}
+        if(res&&res.content){_cloud=_mk;devSyncToCloud();showSyncState();var _sum='同步完成：';_sum+='成功 '+fileOk+' 个。';if(fileSkip){_sum+='\n\n⏭️ 已跳过 '+fileSkip+' 个超大文件（超过100MB无法上传）：'+skipNames.join('、');_sum+='\n请为该资料改填在线直链URL，或压缩到100MB内再传。';}if(fileFail){_sum+='\n⚠️ '+fileFail+' 个上传失败：'+fileFails.slice(0,5).join('、');}alert(_sum);}
         else{showSyncState();alert('同步失败：'+(m||'请检查令牌'));}
       });
   });
