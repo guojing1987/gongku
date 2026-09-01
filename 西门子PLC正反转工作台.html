@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>西门子PLC 电机正反转控制工作台</title>
+<style>
+  :root{
+    --bg:#0c1420; --panel:#121d2f; --panel2:#182742; --line:#2a3d5c;
+    --txt:#e8eef6; --sub:#93a6c0; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444;
+    --blue:#3b82f6; --cyan:#22d3ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:12px 10px 40px;}
+  .wrap{max-width:560px;margin:0 auto;}
+  h1{font-size:19px;text-align:center;font-weight:700;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:8px;}
+  h1 .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:blink 2s infinite;}
+  @keyframes blink{50%{opacity:.2}}
+  .subtitle{text-align:center;color:var(--sub);font-size:12px;margin:4px 0 14px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px;}
+  .card h2{font-size:14px;color:var(--cyan);margin-bottom:10px;display:flex;align-items:center;gap:6px;border-left:3px solid var(--cyan);padding-left:8px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+
+  /* ====== 主电路 ====== */
+  .power-box{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--panel2);border-radius:10px;padding:10px;overflow-x:auto;}
+  .line-col{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:40px;}
+  .symbol{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:10px;border:1.5px solid var(--sub);border-radius:6px;background:#0f1a2b;color:var(--sub);}
+  .symbol.motor{width:40px;height:40px;border-radius:50%;font-weight:700;color:#fff;background:#1f3a5f;border-color:var(--blue);}
+  .km-box{width:36px;height:30px;position:relative;}
+  .km{width:34px;height:12px;background:#2a3d5c;position:absolute;top:9px;left:1px;border-radius:2px;transition:.25s;}
+  .km.on{background:var(--ok);box-shadow:0 0 10px var(--ok);}
+  .km .lab{position:absolute;top:-8px;left:0;width:100%;text-align:center;font-size:9px;color:var(--sub);}
+  .wiren{height:6px;width:6px;background:var(--sub);border-radius:50%;}
+  .wire{width:2px;height:14px;background:#4a5f7e;}
+  .phase{font-size:10px;color:var(--warn);font-weight:700;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:11px;color:var(--sub);}
+  .legend span b{color:var(--txt);font-weight:600;}
+
+  /* ====== 梯形图 ====== */
+  .ladder{background:var(--panel2);border-radius:10px;padding:10px 8px;overflow-x:auto;}
+  .rail{display:flex;gap:6px;align-items:stretch;min-width:420px;}
+  .lv, .rv{width:3px;background:#5a6f90;border-radius:2px;min-height:60px;}
+  .net{flex:1;display:flex;flex-direction:column;gap:2px;padding:0 4px;}
+  .net-title{font-size:10px;color:var(--cyan);font-weight:700;padding-bottom:4px;}
+  .branch{display:flex;align-items:center;}
+  .branch .wireh{height:2px;flex:1;background:#5a6f90;min-width:10px;}
+  .wireh.on{background:var(--ok);box-shadow:0 0 4px var(--ok);}
+  .contact{display:flex;align-items:center;height:26px;border:1.5px solid var(--sub);border-radius:4px;background:#0f1a2b;padding:2px 6px;margin:0 2px;transition:.2s;white-space:nowrap;}
+  .contact .t{font-size:10px;color:var(--sub);}
+  .contact .no, .contact .nc{font-size:12px;color:var(--sub);margin-right:3px;font-style:normal;}
+  .contact.close{border-color:var(--ok);background:#0c2b1a;}
+  .contact.close .t{color:var(--ok);}
+  .contact.close .no{color:var(--ok);}
+  .coil{display:flex;align-items:center;height:30px;border:2px solid var(--sub);border-radius:16px;background:#0f1a2b;padding:2px 10px;margin:0 2px;transition:.2s;white-space:nowrap;}
+  .coil .t{font-size:11px;color:var(--sub);}
+  .coil.on{border-color:var(--ok);background:var(--ok);box-shadow:0 0 12px var(--ok);}
+  .coil.on .t{color:#fff;font-weight:700;}
+  .par{display:flex;flex-direction:column;gap:3px;}
+  .ncx{font-size:9px;color:var(--sub);}
+  .hint{font-size:10px;color:var(--sub);margin-top:6px;line-height:1.6;}
+
+  /* ====== 交互按钮 ====== */
+  .ctrl{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .btn{border:none;border-radius:10px;color:#fff;padding:14px 0;font-size:15px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:.15s;box-shadow:0 3px 0 rgba(0,0,0,.3);}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.3);}
+  .btn-fwd{background:linear-gradient(135deg,#22c55e,#16a34a);}
+  .btn-rev{background:linear-gradient(135deg,#3b82f6,#2563eb);}
+  .btn-stop{background:linear-gradient(135deg,#ef4444,#dc2626);}
+  .btn-reset{background:linear-gradient(135deg,#64748b,#475569);}
+  .btn-fault{background:linear-gradient(135deg,#f59e0b,#d97706);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+
+  /* ====== 状态指示 ====== */
+  .status-row{display:flex;gap:8px;margin-top:12px;}
+  .ind{flex:1;background:var(--panel2);border-radius:10px;padding:10px 8px;text-align:center;}
+  .ind .v{font-size:16px;font-weight:700;margin-top:4px;}
+  .ind .lbl{font-size:11px;color:var(--sub);}
+  .run{color:var(--ok);text-shadow:0 0 8px var(--ok);}
+  .rev{color:var(--blue);text-shadow:0 0 8px var(--blue);}
+  .off{color:var(--sub);}
+  .fault{color:var(--warn);text-shadow:0 0 8px var(--warn);}
+
+  /* 电机 */
+  .motor-view{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;}
+  .disc{width:72px;height:72px;border-radius:50%;border:3px solid var(--sub);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--sub);position:relative;transition:.3s;background:radial-gradient(circle,#1a2942,#0f1a2b);}
+  .disc.fwd{animation:rotF 1s linear infinite;border-color:var(--ok);color:var(--ok);}
+  .disc.rev{animation:rotR 1s linear infinite;border-color:var(--blue);color:var(--blue);}
+  @keyframes rotF{to{transform:rotate(360deg)}}
+  @keyframes rotR{to{transform:rotate(-360deg)}}
+  .m-label{font-size:12px;color:var(--sub);}
+
+  /* 点位表 */
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;}
+  th{color:var(--cyan);font-weight:600;}
+  .st{font-weight:700;}
+  .st.on{color:var(--ok);}
+  .st.off{color:var(--err);}
+
+  /* 故障 */
+  details{background:var(--panel2);border-radius:8px;padding:8px 10px;margin-bottom:6px;}
+  summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--txt);}
+  details p{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.7;}
+  .foot{text-align:center;color:var(--sub);font-size:10px;margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><span class="dot"></span>西门子PLC·电机正反转控制工作台</h1>
+  <div class="subtitle">S7-200 SMART 编程练习 · 电气互锁 + 程序互锁 · 交互模拟演示</div>
+
+  <!-- 主电路 -->
+  <div class="card">
+    <h2>① 主电路原理图</h2>
+    <div class="power-box">
+      <div class="line-col">
+        <span class="phase">L1</span>
+        <div class="wire"></div><div class="symbol">QF<br>总电源</div><div class="wire"></div>
+        <div class="km-box"><div class="km" id="km1"><span class="lab">KM1</span></div></div><div class="wire"></div>
+        <div class="symbol">FR<br>热继</div><div class="wire"></div><div class="symbol motor">M<br>3~</div>
+      </div>
+      <div class="line-col">
+        <span class="phase">L2</span>
+        <div class="wire"></div><div class="symbol">QF</div><div class="wire"></div>
+        <div class="km-box"></div><div class="wire"></div>
+        <div class="symbol">FR</div><div class="wire"></div>
+      </div>
+      <div class="line-col">
+        <span class="phase">L3</span>
+        <div class="wire"></div><div class="symbol">QF</div><div class="wire"></div>
+        <div class="km-box"><div class="km" id="km2"><span class="lab">KM2</span></div></div><div class="wire"></div>
+        <div class="symbol">FR</div><div class="wire"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><b>QF</b> 电源开关</span>
+      <span><b>KM1</b> 正转接触器</span>
+      <span><b>KM2</b> 反转接触器</span>
+      <span><b>FR</b> 热继电器(过载)</span>
+      <span><b>M</b> 三相异步电机</span>
+    </div>
+  </div>
+
+  <!-- 控制要求 -->
+  <div class="card">
+    <h2>② 控制要求</h2>
+    <div style="font-size:13px;color:var(--sub);line-height:1.9;">
+      1. 按<font color="#22c55e">正转启动</font>→ KM1吸合，电机<font color="#22c55e">正转</font>。<br>
+      2. 按<font color="#3b82f6">反转启动</font>→ KM2吸合，电机<font color="#3b82f6">反转</font>。<br>
+      3. 正转与反转<font color="#ef4444">互锁</font>：不能同时吸合（防相间短路）。<br>
+      4. 按<font color="#ef4444">停止</font>或过载 → 电机<font color="#ef4444">停止</font>。<br>
+      5. 具有<font color="#f59e0b">自锁</font>功能：松手后保持运行。
+    </div>
+  </div>
+
+  <!-- 梯形图 -->
+  <div class="card">
+    <h2>③ 梯形图程序（LAD）</h2>
+    <div class="ladder">
+      <div class="rail">
+        <div class="lv"></div>
+        <div class="net">
+          <div class="net-title">网络1 · 正转控制</div>
+          <div class="branch">
+            <div class="wireh" id="n1w1"></div>
+            <div class="contact" id="i00"><span class="t">I0.0 正启</span></div>
+            <div class="contact" id="i02"><span class="t">I0.2 停止</span></div>
+            <div class="contact" id="i03"><span class="t">I0.3 过载</span></div>
+            <div class="contact" id="q01"><span class="t">Q0.1 反互</span></div>
+            <div class="coil" id="q00"><span class="t">Q0.0 正转</span></div>
+            <div class="wireh"></div>
+          </div>
+          <div class="branch">
+            <div class="wireh" id="n1w2"></div>
+            <div class="contact" id="q00fb" style="margin-left:2px;"><span class="t">Q0.0 自锁</span></div>
+            <div class="wireh" id="n1w3"></div>
+          </div>
+        </div>
+        <div class="net">
+          <div class="net-title">网络2 · 反转控制</div>
+          <div class="branch">
+            <div class="wireh" id="n2w1"></div>
+            <div class="contact" id="i01"><span class="t">I0.1 反启</span></div>
+            <div class="contact" id="i02b"><span class="t">I0.2 停止</span></div>
+            <div class="contact" id="i03b"><span class="t">I0.3 过载</span></div>
+            <div class="contact" id="q00b"><span class="t">Q0.0 正互</span></div>
+            <div class="coil" id="q01b"><span class="t">Q0.1 反转</span></div>
+            <div class="wireh"></div>
+          </div>
+          <div class="branch">
+            <div class="wireh" id="n2w2"></div>
+            <div class="contact" id="q01fb" style="margin-left:2px;"><span class="t">Q0.1 自锁</span></div>
+            <div class="wireh" id="n2w3"></div>
+          </div>
+        </div>
+        <div class="rv"></div>
+      </div>
+    </div>
+    <div class="hint">▸ 常开触点 <span style="color:var(--ok)">I0.0/Q0.0</span>：条件满足即闭合；常闭触点 <span style="color:var(--warn)">I0.2/I0.3/互锁</span>：输入为0时闭合。<br>▸ 线圈通电时变绿，表示该输出接通 → 驱动接触器。</div>
+  </div>
+
+  <!-- 交互模拟 -->
+  <div class="card">
+    <h2>④ 实时模拟（可交互）</h2>
+    <div class="ctrl">
+      <button class="btn btn-fwd" id="btnFwd">正转 ▶ 启动</button>
+      <button class="btn btn-rev" id="btnRev">反转 ◀ 启动</button>
+      <button class="btn btn-stop" id="btnStop">■ 停止</button>
+      <button class="btn btn-fault" id="btnFault">🔥 模拟过载</button>
+    </div>
+    <div class="status-row">
+      <div class="ind"><div class="lbl">接触器 KM1</div><div class="v off" id="stKM1">释放</div></div>
+      <div class="ind"><div class="lbl">接触器 KM2</div><div class="v off" id="stKM2">释放</div></div>
+      <div class="ind"><div class="lbl">电机状态</div><div class="v off" id="stMotor">停止</div></div>
+      <div class="ind"><div class="lbl">过载 FR</div><div class="v off" id="stFR">正常</div></div>
+    </div>
+    <div class="motor-view">
+      <div class="disc" id="disc">M 3~</div>
+      <div class="m-label">三相异步电机<br>运行状态实时显示</div>
+    </div>
+    <div style="text-align:center;margin-top:8px;">
+      <button class="btn btn-reset" id="btnReset" style="width:50%;padding:10px 0;font-size:13px;">↺ 复位(排除过载)</button>
+    </div>
+  </div>
+
+  <!-- 点位表 -->
+  <div class="card">
+    <h2>⑤ I/O 地址分配表</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div>
+        <table>
+          <tr><th>输出 Q</th><th>状态</th><th>说明</th></tr>
+          <tr><td>Q0.0</td><td class="st off" id="ptQ00">OFF</td><td>正转接触器 KM1</td></tr>
+          <tr><td>Q0.1</td><td class="st off" id="ptQ01">OFF</td><td>反转接触器 KM2</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>输入 I</th><th>状态</th><th>说明</th></tr>
+          <tr><td>I0.0</td><td class="st off" id="ptI00">0</td><td>正转启动 SB1</td></tr>
+          <tr><td>I0.1</td><td class="st off" id="ptI01">0</td><td>反转启动 SB2</td></tr>
+          <tr><td>I0.2</td><td class="st off" id="ptI02">0</td><td>停止 SB3</td></tr>
+          <tr><td>I0.3</td><td class="st off" id="ptI03">0</td><td>过载 FR</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 故障排查 -->
+  <div class="card">
+    <h2>⑥ 常见故障排查</h2>
+    <details>
+      <summary>电机不能正转或反转？</summary>
+      <p>1. 检查互锁是否误动作（正转时Q0.1常闭必须为通）。<br>2. 检查热继电器FR是否已动作（过载后需复位）。<br>3. 检查停止按钮常闭触点是否接触不良。<br>4. 核对PLC输出点Q0.0/Q0.1与接触器线圈连接。</p>
+    </details>
+    <details>
+      <summary>按下启动后电机停不下来？</summary>
+      <p>1. 停止按钮用常闭触点，若接常开则逻辑相反。<br>2. 检查I0.2停止信号是否正常到达PLC。<br>3. 查看PLC RUN状态及程序是否下载成功。</p>
+    </details>
+    <details>
+      <summary>正反转同时吸合/烧接触器？</summary>
+      <p>1. 必须同时具备电气互锁（KM1/KM2常闭触点串入对方回路）和程序互锁（梯形图中Q0.1/Q0.0常闭串入对方网络）。<br>2. 程序互锁缺失或互锁触点被短接是常见原因。</p>
+    </details>
+  </div>
+
+  <div class="foot">西门子PLC正反转控制 · 交互演示工作台 · 供现场学习/维修参考</div>
+</div>
+
+<script>
+  // ===== 状态 =====
+  var state = { q00:false, q01:false, i00:false, i01:false, i02:false, i03:false, fault:false };
+
+  function setInput(el,val){
+    var was = el.checked;
+    if(was!==val){ el.checked = val; el.dispatchEvent(new Event('change')); }
+  }
+
+  // ===== 梯形图计算（模拟PLC扫描） =====
+  function scan(){
+    var s = state;
+    // 网络1：正转 = (I0.0‖Q0.0) · ̄I0.2 · ̄I0.3 · ̄Q0.1
+    var fwdNew = (s.i00 || s.q00) && !s.i02 && !s.i03 && !s.q01;
+    // 网络2：反转 = (I0.1‖Q0.1) · ̄I0.2 · ̄I0.3 · ̄Q0.0
+    var revNew = (s.i01 || s.q01) && !s.i02 && !s.i03 && !s.q00;
+    s.q00 = fwdNew;
+    s.q01 = revNew;
+    render();
+  }
+
+  function cls(el,on){ el.classList.toggle('close',on); el.classList.toggle('on',on); }
+
+  function render(){
+    var s = state;
+    var setOn = function(id,on,yes){ var e=document.getElementById(id); if(e){ e.classList.toggle('on',on); if(yes) e.classList.toggle('close',on);} };
+    var setWire=function(id,on){ var e=document.getElementById(id); if(e) e.classList.toggle('on',on);};
+
+    // 常开触点
+    cls(document.getElementById('i00'), s.i00);
+    cls(document.getElementById('i01'), s.i01);
+    cls(document.getElementById('q00fb'), s.q00); // 自锁反馈 常开（线圈接通=闭合）
+    cls(document.getElementById('q01fb'), s.q01);
+    // 常闭触点：输入为0时闭合
+    cls(document.getElementById('i02'),  !s.i02);
+    cls(document.getElementById('i02b'), !s.i02);
+    cls(document.getElementById('i03'),  !s.i03);
+    cls(document.getElementById('i03b'), !s.i03);
+    // 互锁常闭：对方线圈断开时闭合
+    cls(document.getElementById('q01'), !s.q01);
+    cls(document.getElementById('q00b'), !s.q00);
+    // 线圈
+    setOn('q00', s.q00, false); setOn('q01b', s.q01, false);
+
+    // 网络1导通判定（简化：正转线圈通电即整网高亮）
+    setWire('n1w1', s.q00); setWire('n1w2', s.q00); setWire('n1w3', s.q00);
+    setWire('n2w1', s.q01); setWire('n2w2', s.q01); setWire('n2w3', s.q01);
+
+    // 主电路接触器
+    document.getElementById('km1').classList.toggle('on', s.q00);
+    document.getElementById('km2').classList.toggle('on', s.q01);
+
+    // 状态指示
+    var sm=document.getElementById('stMotor'), km1=document.getElementById('stKM1'), km2=document.getElementById('stKM2'), fr=document.getElementById('stFR');
+    var disc=document.getElementById('disc');
+    km1.textContent = s.q00?'吸合':'释放'; km1.className='v '+(s.q00?'run':'off');
+    km2.textContent = s.q01?'吸合':'释放'; km2.className='v '+(s.q01?'rev':'off');
+    fr.textContent = s.i03||s.fault?'过载!':'正常'; fr.className='v '+((s.i03||s.fault)?'fault':'off');
+
+    if(s.fault || s.i03){ sm.textContent='过载停止'; sm.className='v fault'; disc.className='disc'; }
+    else if(s.q00){ sm.textContent='正转中'; sm.className='v run'; disc.className='disc fwd'; }
+    else if(s.q01){ sm.textContent='反转中'; sm.className='v rev'; disc.className='disc rev'; }
+    else { sm.textContent='停止'; sm.className='v off'; disc.className='disc'; }
+
+    // 点位表
+    var pt=function(id,on,onTxt,offTxt){var e=document.getElementById(id); if(e){e.textContent=on?(onTxt||'ON'):(offTxt||'OFF'); e.className='st '+(on?'on':'off');}};
+    pt('ptQ00', s.q00); pt('ptQ01', s.q01);
+    pt('ptI00', s.i00, '1','0'); pt('ptI01', s.i01, '1','0');
+    pt('ptI02', s.i02, '1','0'); pt('ptI03', s.i03, '1','0');
+  }
+
+  // ===== 交互 =====
+  function fwdDown(){ if(state.fault)return; state.i00=true; scan(); }
+  function fwdUp(){ state.i00=false; scan(); }
+  function revDown(){ if(state.fault)return; state.i01=true; scan(); }
+  function revUp(){ state.i01=false; scan(); }
+  function stopPress(){ state.i02=true; scan(); setTimeout(function(){ state.i02=false; scan(); },150); }
+  function faultPress(){ state.fault=true; state.i03=true; state.i00=false; state.i01=false; state.q00=false; state.q01=false; scan(); }
+  function resetPress(){ state.fault=false; state.i03=false; scan(); }
+
+  var bf=document.getElementById('btnFwd'), br=document.getElementById('btnRev');
+  ['mousedown','touchstart'].forEach(function(ev){ bf.addEventListener(ev,function(e){e.preventDefault();fwdDown();}); br.addEventListener(ev,function(e){e.preventDefault();revDown();}); });
+  ['mouseup','touchend','mouseleave'].forEach(function(ev){ bf.addEventListener(ev,function(e){fwdUp();}); br.addEventListener(ev,function(e){revUp();}); });
+  document.getElementById('btnStop').addEventListener('click',stopPress);
+  document.getElementById('btnFault').addEventListener('click',faultPress);
+  document.getElementById('btnReset').addEventListener('click',resetPress);
+
+  render();
+</script>
+</body>
+</html>
