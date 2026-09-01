@@ -147,6 +147,7 @@ const ORDER=["西门子","汇川","三菱","ABB","欧姆龙","施耐德","安川
   <div class="know"><h4>西门子 PLC 输入输出点位</h4><ul><li>数字量输入 <b>I0.0/I0.1…</b>；输出 <b>Q0.0…</b>。</li><li>模拟量 <b>IW64/QW66</b>，字寻址16位。</li><li>S7-1200 CPU 1214C 默认14DI/10DO，可扩展。</li><li>DI为24V DC；DO分<b>继电器输出</b>（交直流通吃）与<b>晶体管输出</b>（快、只能直流、限流）。</li></ul></div>
   <div class="know"><h4>电机启动方式</h4><ul><li><b>直接启动</b>：≤7.5kW；启动电流约5~7×额定。</li><li><b>星-三角 Y-Δ</b>：11~55kW，降压1/√3。</li><li><b>软启动</b>：平滑启动/减冲击（水泵/风机）。</li><li><b>变频器</b>：调速/频繁启停/大功率。</li><li>能否直启看电源：变压器容量≥电机功率×3以上可考虑。</li></ul></div>
   <div class="know"><h4>接触器 / 热继电器</h4><ul><li>接触器按电机额定电流×1.05~1.1 选 AC-3。</li><li>热继整定设额定电流0.95~1.05。</li><li>空开(电机保护型)选额定约×2，D型。</li></ul></div>
+  <div class="know"><h4>西门子PLC · 电机正反转控制（实训工作台）</h4><ul><li><span class="hl">控制要求</span>：正转→KM1吸合；反转→KM2吸合；正反转<b>互锁</b>不能同时吸合（防相间短路）；停止/过载→停；具<b>自锁</b>（松手保持运行）。</li><li><span class="hl">IO分配</span>：I0.0正启 · I0.1反启 · I0.2停止 · I0.3过载FR；Q0.0=正转KM1 · Q0.1=反转KM2。</li><li><span class="hl">梯形图逻辑</span>：正转=(I0.0 ‖ Q0.0自锁)×̅停止×̅过载×̅反转；反转对称。启动并联支路自锁，对方线圈常闭<b>互锁</b>。</li><li><span class="hl">必备双互锁</span>：电气互锁(接触器KM常闭串对方回路)＋程序互锁(梯形图常闭)，缺一容易烧接触器。</li><li><span class="hl">故障排查</span>：不能转→查FR复位/停止常闭/互锁；停不下→停止常闭接点接触不良；同时吸合→查互锁被短接。</li><li>▶ <a href="https://guojing1987.github.io/gongku/%E8%A5%BF%E9%97%A8%E5%AD%90PLC%E6%AD%A3%E5%8F%8D%E8%BD%AC%E5%B7%A5%E4%BD%9C%E5%8F%B0.html" target="_blank">打开互动模拟工作台（主电路 / 梯形图 / 实时仿真）</a></li></ul></div>
   <div class="know"><h4>成套学习 · 维修视频</h4><ul><li><a href="https://www.bilibili.com/video/BV1hyLj63EdE/" target="_blank">电工从入门到精通实操课（零基础接线·维修）</a></li><li><a href="https://www.bilibili.com/video/BV1Lo9jY7E7y/" target="_blank">0基础学电工：手把手成电气达人</a></li><li><a href="https://www.bilibili.com/video/BV1tAz9BtEKE/" target="_blank">电工入门自学教程</a></li><li><a href="https://www.bilibili.com/video/BV1uaz4B9EQN/" target="_blank">PLC编程学习（西门子/三菱合集）</a></li><li><a href="https://www.bilibili.com/video/BV1DTtCeNExq/" target="_blank">汇川PLC InProShop 入门到精通</a></li><li><a href="https://www.bilibili.com/video/BV1f5vGeyENj/" target="_blank">工控维修：变频器/伺服/电路板维修</a></li></ul><p style="color:#8a8a8f;font-size:11px">公开B站视频，点击跳转。想学哪块随时告诉我。</p></div>
  </div>
 </div>
@@ -526,7 +527,7 @@ function _toast(m,ms){ms=ms||2400;var e=document.getElementById('appToast');if(!
   <div style="height:10px"></div>
   <div class="card" style="cursor:pointer;display:flex;gap:12px;align-items:center" onclick="nav('table')"><span style="font-size:22px">📐</span><div><div style="font-weight:700">常用对照表</div><small>螺纹 / 管径 / 三相电机配置参考</small></div></div>
   <div style="height:10px"></div>
-  <div class="card" style="cursor:pointer;display:flex;gap:12px;align-items:center" onclick="nav('know')"><span style="font-size:22px">📖</span><div><div style="font-weight:700">工控学习资料</div><small>PNP/NPN · 西门子点位 · 电机启动 · 维修视频</small></div></div>
+  <div class="card" style="cursor:pointer;display:flex;gap:12px;align-items:center" onclick="nav('know')"><span style="font-size:22px">📖</span><div><div style="font-weight:700">工控学习资料</div><small>PNP/NPN · 西门子点位 · 电机正反转 · 维修视频</small></div></div>
  </div>
 </div>
 <div id="pg-admin" class="hide">
